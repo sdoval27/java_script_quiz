@@ -36,6 +36,7 @@ main {
     font-size: var(--header-size);
 }
 
+
 main button {
     background-color: var(--button-color);
     color: white;
