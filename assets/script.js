@@ -1,4 +1,28 @@
-var alertEl = document.querySelector(".alert")
+var titleEl = $("<h2>");
+var paragraphEl = $("<p>");
+var startButton = $("<button>")
+var timeEl = $("#timer");
+var alertEl = $("<p>");
+var mainEl = $("#main");
+
+//Home Page
+//title
+titleEl.text ("Coding Quiz!");
+titleEl.attr("class", "title").addClass("format");
+console.log(titleEl);
+//description
+paragraphEl.text("Try to answer all the questions as quickly and accurately as possible! You have one chance to answer each question and a limited amount of time to complete the quiz. Good luck!");
+paragraphEl.attr("class", "paragraph-element").addClass("format");
+//start button
+startButton.text("Start Quiz");
+startButton.attr("class", "start-button")
+startButton.addClass("format");
+
+mainEl.append(titleEl);
+mainEl.append(paragraphEl);
+mainEl.append(startButton);
+
+
 
 // list of all questions, choices, and answers
 var questions = [
@@ -36,19 +60,38 @@ var questions = [
     },
   ];
 
+
 //todo: create an event listener to start the quiz and call startQuiz function
   
 //todo: create a function that defines how the quiz works
 function startQuiz(){
+    var secondsLeft = 90;
     //TODO: create a for loop that cycles through above array each time user selects an answer
     for (i=0 ; i<questions.length; i++){
 
     }
 
     if(!answer){
-    alert.textContent = "wrong, -5 sec";
+    alertEl.textContent = "incorrect, -5 sec";
     //timer subratcts five seconds
     }else{
-    alert.textContent = "correct!";
+    alertEl.textContent = "correct!";
     };
+
+    //view activity 09 for timer code
+    var timerInterval =setInterval(function(){
+        secondsLeft--;
+        timeEl.textContent = "Timer: "+ secondsLeft;
+
+        if(secondsLeft === 0) {
+            clearInterval(timerInterval);
+            endQuiz();
+        }
+    }, 1000);
+    //append timer to timeEL
+}
+
+//display end of quiz page
+function endQuiz(){
+
 }
