@@ -35,13 +35,20 @@ var questions = [
       answer: 'console.log',
     },
   ];
-  
-//TODO: create a for loop that cycles through above array each time user selects an answer
-for (i=0 ; i<questions.length; )
 
-if(!answer){
+//todo: create an event listener to start the quiz and call startQuiz function
+  
+//todo: create a function that defines how the quiz works
+function startQuiz(){
+    //TODO: create a for loop that cycles through above array each time user selects an answer
+    for (i=0 ; i<questions.length; i++){
+
+    }
+
+    if(!answer){
     alert.textContent = "wrong, -5 sec";
     //timer subratcts five seconds
-}else{
+    }else{
     alert.textContent = "correct!";
+    };
 }
