@@ -1,4 +1,4 @@
-
+var alertEl = document.querySelector(".alert")
 
 // list of all questions, choices, and answers
 var questions = [
@@ -36,3 +36,12 @@ var questions = [
     },
   ];
   
+//TODO: create a for loop that cycles through above array each time user selects an answer
+for (i=0 ; i<questions.length; )
+
+if(!answer){
+    alert.textContent = "wrong, -5 sec";
+    //timer subratcts five seconds
+}else{
+    alert.textContent = "correct!";
+}
