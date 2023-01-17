@@ -25,7 +25,17 @@ startButton.addClass("format");
 
 
 // list of all questions, choices, and answers
-var questions = [
+
+
+  
+//todo: create a function that defines how the quiz works
+function startQuiz(){
+  //hide Title, Paragraph El, start button
+  titleEl.hide();
+  paragraphEl.hide();
+  startButton.hide();
+  //show timer amd first question
+  var questions = [
     {
       title: 'Commonly used data types DO NOT include:',
       choices: ['strings', 'booleans', 'alerts', 'numbers'],
@@ -60,41 +70,21 @@ var questions = [
     },
   ];
 
-  
-//todo: create a function that defines how the quiz works
-function startQuiz(){
-  //hide Title, Paragraph El, start button
-  titleEl.hide();
-  paragraphEl.hide();
-  startButton.hide();
-  //show timer amd first question
+  const title = document.getElementById('#main')
   //TODO: create timer (reference activity 09)
-  var secondsLeft = 90;
-  var timerInterval = setInterval(function() {
-      secondsLeft--;
-      timerCountdown.text = ("Timer: " + secondsLeft);
   
-      if(secondsLeft === 0) {
-        clearInterval(timerInterval);
-        endQuiz();
-      }
-    }, 1000);
-  //append timer to timeEL
-  timeEl.append(timerCountdown);
-
     //TODO: create a for loop that cycles through above array each time user selects an answer
     for (i=0 ; i<questions.length; i++){
-      title[i]
+      var questionEl = $("<h1>");
+      questionEl.attr("title", JSON.stringify(questions[i]));
+      questionEl.text(questions[i]);
+      
+      mainEl.append(questionEl);
+      console.log(questions[i]);
+      console.log(questionEl);
     }
 
-    if(!answer){
-    alertEl.textContent = "incorrect, -5 sec";
-    //timer subratcts five seconds
-    secondsLeft = secondsLeft - 5;
-    }else{
-    alertEl.textContent = "correct!";
-    };
-
+   
     
 };
 
