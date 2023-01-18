@@ -9,16 +9,12 @@ var timeEl = $("#timer");
 
 //Home Page
 //title
-titleEl.text ("Coding Quiz!");
-titleEl.attr("class", "title").addClass("format");
+titleEl.text ("Coding Quiz!").attr("class", "title").addClass("format");
 console.log(titleEl);
 //description
-paragraphEl.text("Try to answer all the questions as quickly and accurately as possible! You have one chance to answer each question and a limited amount of time to complete the quiz. Good luck!");
-paragraphEl.attr("class", "paragraph-element").addClass("format");
+paragraphEl.text("Try to answer all the questions as quickly and accurately as possible! You have one chance to answer each question and a limited amount of time to complete the quiz. Good luck!").attr("class", "paragraph").addClass("format");
 //start button
-startButton.text("Start Quiz");
-startButton.attr("class", "start-button");
-startButton.addClass("format");
+startButton.text("Start Quiz").attr("class", "start-button").addClass("format");
 
 //Questions Page
 //questions array
@@ -60,11 +56,11 @@ var questions = [
 
 //End Page
 var endTitleEl = $("<h2>");
-
+var resultsBox = $("<p>");
 
 
 // timer function
-var secondsLeft = 75;
+var secondsLeft = 10;
   
   function setTime() {
 
@@ -74,13 +70,16 @@ var secondsLeft = 75;
        timeEl.text("Timer: " + secondsLeft);
   
       if(secondsLeft === 0) {
+        
+        //calls endscreen function
         clearInterval(timerInterval);
+        endQuiz();
       }
   
     }, 1000);
 
     //call questions 
-    startQuiz();
+   // startQuiz();
    }
 
   
@@ -109,19 +108,19 @@ function startQuiz(questions){
         console.log(questions[i].choices);
     }
   }
-
- if (secondsLeft === 0)  {
-  endQuiz();
- }
     
 };
 
 //display end of quiz page
 function endQuiz() {
   
-  questionEl.hide();
+ // questionEl.hide();
   endTitleEl.text ("The End!");
+  endTitleEl.attr("class", "title").addClass("format");
   console.log(endTitleEl);
+
+  resultsBox.text ("Your score is: " + secondsLeft).addClass("format").addClass("paragraph");
+
 }
 
 startButton.on('click', setTime);
@@ -131,3 +130,4 @@ mainEl.append(titleEl);
 mainEl.append(paragraphEl);
 mainEl.append(startButton);
 mainEl.append(endTitleEl);
+mainEl.append(resultsBox);

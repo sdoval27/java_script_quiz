@@ -31,6 +31,9 @@ li {
     font-size: var(--header-size);
 }
 
+.paragraph {
+    font-size: var(--paragraph-size);
+}
 
 .start-button {
     background-color: var(--button-color);
