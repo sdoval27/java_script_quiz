@@ -57,7 +57,8 @@ var questions = [
 //End Page
 var endTitleEl = $("<h2>");
 var resultsBox = $("<p>");
-
+var userScore = $("<input>");
+var submit = $("<button>");
 
 // timer function
 var secondsLeft = 10;
@@ -111,17 +112,44 @@ function startQuiz(questions){
     
 };
 
+
+
 //display end of quiz page
+var response = userScore.value;
+var savedResponse = $("#highscore");
 function endQuiz() {
-  
- // questionEl.hide();
+ 
+ //TODO: questionEl.hide();
+ //endscreen Title Element
   endTitleEl.text ("The End!");
   endTitleEl.attr("class", "title").addClass("format");
   console.log(endTitleEl);
+ //endscreen score element
+  resultsBox.text ("Your score is: " + secondsLeft + "! Record your score and initials below.").addClass("format").addClass("paragraph");
+  //userscore
+  userScore.attr("placeholder", "your score").addClass("format").addClass("score-box").attr("id","score");
+  submit.text("Submit").attr("class", "submit-button");
 
-  resultsBox.text ("Your score is: " + secondsLeft).addClass("format").addClass("paragraph");
+//save response in local storage
+  
+  localStorage.setItem("response", JSON.stringify(response));
 
+  mainEl.append(userScore);
+  mainEl.append(submit);
+  savedResponse.append (response);
+  displayResponse();
 }
+
+function displayResponse() {
+  
+  var lastScore = JSON.parse(localStorage.getItem("response"));
+  if (lastScore !== null) {
+    savedResponse = lastScore;
+  } else {
+    return;
+  }
+}
+submit.on("click", displayResponse);
 
 startButton.on('click', setTime);
 

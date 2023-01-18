@@ -42,6 +42,24 @@ li {
     border-radius: 12px;
     padding: 15px 32px;
     font-size: var(--paragraph-size);
+    margin-left: 47%;
+}
+
+.submit-button {
+    background-color: var(--button-color);
+    color: white;
+    border:none;
+    border-radius: 12px;
+    padding: 15px 32px;
+    font-size: var(--paragraph-size);
+}
+
+.score-box {
+    border-color: var(--button-color);
+    border-radius: 12px;
+    font-size: var(--paragraph-size);
+    width: 400px;
+    margin-left: 35%;
 }
 
 .format {
