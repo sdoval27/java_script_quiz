@@ -20,11 +20,50 @@ startButton.text("Start Quiz");
 startButton.attr("class", "start-button");
 startButton.addClass("format");
 
+//Questions Page
+//questions array
+var questions = [
+  {
+    title: 'Commonly used data types DO NOT include:',
+    choices: ['strings', 'booleans', 'alerts', 'numbers'],
+    answer: 'alerts',
+  },
+  {
+    title: 'The condition in an if / else statement is enclosed within ____.',
+    choices: ['quotes', 'curly brackets', 'parentheses', 'square brackets'],
+    answer: 'parentheses',
+  },
+  {
+    title: 'Arrays in JavaScript can be used to store ____.',
+    choices: [
+      'numbers and strings',
+      'other arrays',
+      'booleans',
+      'all of the above',
+    ],
+    answer: 'all of the above',
+  },
+  {
+    title:
+      'String values must be enclosed within ____ when being assigned to variables.',
+    choices: ['commas', 'curly brackets', 'quotes', 'parentheses'],
+    answer: 'quotes',
+  },
+  {
+    title:
+      'A very useful tool used during development and debugging for printing content to the debugger is:',
+    choices: ['JavaScript', 'terminal / bash', 'for loops', 'console.log'],
+    answer: 'console.log',
+  },
+];
+
+
+//End Page
+var endTitleEl = $("<h2>");
 
 
 
-
-// list of all questions, choices, and answers
+// timer function
 var secondsLeft = 75;
   
   function setTime() {
@@ -35,89 +74,60 @@ var secondsLeft = 75;
        timeEl.text("Timer: " + secondsLeft);
   
       if(secondsLeft === 0) {
-        // Stops execution of action at set interval
         clearInterval(timerInterval);
       }
   
     }, 1000);
 
+    //call questions 
     startQuiz();
-
    }
 
   
 //todo: create a function that defines how the quiz works
-function startQuiz(){
+function startQuiz(questions){
   //hide Title, Paragraph El, start button
   titleEl.hide();
   paragraphEl.hide();
   startButton.hide();
-  //show timer amd first question
   
+  var output = [];
+  var answers;
 
 
-  var questions = [
-    {
-      title: 'Commonly used data types DO NOT include:',
-      choices: ['strings', 'booleans', 'alerts', 'numbers'],
-      answer: 'alerts',
-    },
-    {
-      title: 'The condition in an if / else statement is enclosed within ____.',
-      choices: ['quotes', 'curly brackets', 'parentheses', 'square brackets'],
-      answer: 'parentheses',
-    },
-    {
-      title: 'Arrays in JavaScript can be used to store ____.',
-      choices: [
-        'numbers and strings',
-        'other arrays',
-        'booleans',
-        'all of the above',
-      ],
-      answer: 'all of the above',
-    },
-    {
-      title:
-        'String values must be enclosed within ____ when being assigned to variables.',
-      choices: ['commas', 'curly brackets', 'quotes', 'parentheses'],
-      answer: 'quotes',
-    },
-    {
-      title:
-        'A very useful tool used during development and debugging for printing content to the debugger is:',
-      choices: ['JavaScript', 'terminal / bash', 'for loops', 'console.log'],
-      answer: 'console.log',
-    },
-  ];
+  
 
  // const title = document.getElementById('#main')
-  //TODO: create timer (reference activity 09)
   
-    //TODO: create a for loop that cycles through above array each time user selects an answer
+    //create a for loop that cycles through questions array each time user selects an answer
     for (i=0 ; i<questions.length; i++){
-      var questionEl = $("<h1>");
-      questionEl.attr("title", JSON.stringify(questions[i]));
-      questionEl.text(questions[i]);
-      
-      mainEl.append(questionEl);
-      console.log(questions[i]);
-      console.log(questionEl);
-    }
 
-   
+      //reset answer list
+      answers = [];
+
+      for(letter in questions[i].choices){
+        console.log(questions[i].choices);
+    }
+  }
+
+ if (secondsLeft === 0)  {
+  endQuiz();
+ }
     
 };
 
 //display end of quiz page
-function endQuiz(
-
-){
-
+function endQuiz() {
+  
+  questionEl.hide();
+  endTitleEl.text ("The End!");
+  console.log(endTitleEl);
 }
+
 startButton.on('click', setTime);
 
 //append page elements
 mainEl.append(titleEl);
 mainEl.append(paragraphEl);
 mainEl.append(startButton);
+mainEl.append(endTitleEl);
