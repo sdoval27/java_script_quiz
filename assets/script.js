@@ -12,7 +12,7 @@ var timeEl = $("#timer");
 titleEl.text ("Coding Quiz!").attr("class", "title").addClass("format");
 console.log(titleEl);
 //description
-paragraphEl.text("Try to answer all the questions as quickly and accurately as possible! You have one chance to answer each question and a limited amount of time to complete the quiz. Good luck!").attr("class", "paragraph").addClass("format");
+paragraphEl.text("Try to answer all the questions as quickly and accurately as possible! You have one chance to answer each question. Good luck!").attr("class", "paragraph").addClass("format");
 //start button
 startButton.text("Start Quiz").attr("class", "start-button").addClass("format");
 
@@ -23,6 +23,7 @@ var choiceBEl = $("#choice-B");
 var choiceCEl = $("#choice-C");
 var choiceDEl = $("#choice-D");
 let currentQuestion = 0;
+
 //questions array
 var questions = [
   {
@@ -67,7 +68,7 @@ var userScore = $("<input>");
 var submit = $("<button>");
 
 // timer function
-var secondsLeft = 10;
+var secondsLeft = 75;
 
   function setTime() {
 
@@ -91,7 +92,7 @@ var secondsLeft = 10;
    startQuiz();
    }
 
-  
+var answers = questions[currentQuestion].answer;
 //todo: create a function that defines how the quiz works
 function startQuiz(questions){
   //hide Title, Paragraph El, start button
@@ -99,8 +100,7 @@ function startQuiz(questions){
   paragraphEl.hide();
   startButton.hide();
   
-  var output = [];
-  var answers;
+  
 
   qContainer = questions[currentQuestion].title;
   questionEl.textContent = qContainer;
@@ -136,6 +136,7 @@ var savedResponseEl = $("#highscore");
 var response = [];
 function endQuiz() { 
  //TODO: questionEl.hide();
+
  //endscreen Title Element
   endTitleEl.text ("The End!");
   endTitleEl.attr("class", "title").addClass("format");
@@ -147,11 +148,12 @@ function endQuiz() {
   userScore.attr("placeholder", "your score").addClass("format").addClass("score-box").attr("id","score");
   submit.text("Submit").attr("class", "submit-button");
 
-  if(submit==="click"){
+ //routes to function that displays leaderboard scores
+  if(submit === "click"){
     displayResponse();
    }
+   
   
-  //render leaderboard scores
   
 //save response in local storage
 mainEl.append(userScore);
@@ -159,14 +161,13 @@ mainEl.append(submit);
   
 }
 
-
 function displayResponse() {
   endTitleEl.hide();
   resultsBox.hide();
   submit.hide();
 
   savedResponseEl.HTML = "";
-
+  
   for (var i = 0; i < response.length; i++){
     var responses = response[i];
     var li =$("<li>");

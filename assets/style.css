@@ -45,6 +45,10 @@ li {
     margin-left: 47%;
 }
 
+.hide {
+    display:none;
+}
+
 .submit-button {
     background-color: var(--button-color);
     color: white;
