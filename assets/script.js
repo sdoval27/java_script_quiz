@@ -17,6 +17,12 @@ paragraphEl.text("Try to answer all the questions as quickly and accurately as p
 startButton.text("Start Quiz").attr("class", "start-button").addClass("format");
 
 //Questions Page
+var qContainer = [];
+var choiceAEl = $("#choice-A");
+var choiceBEl = $("#choice-B");
+var choiceCEl = $("#choice-C");
+var choiceDEl = $("#choice-D");
+let currentQuestion = 0;
 //questions array
 var questions = [
   {
@@ -62,7 +68,7 @@ var submit = $("<button>");
 
 // timer function
 var secondsLeft = 10;
-  
+
   function setTime() {
 
     // Sets interval in variable
@@ -70,9 +76,11 @@ var secondsLeft = 10;
       secondsLeft--;
        timeEl.text("Timer: " + secondsLeft);
   
-      if(secondsLeft === 0) {
-        
+      if (secondsLeft === 0) {
         //calls endscreen function
+        clearInterval(timerInterval);
+        endQuiz();
+      } else if (secondsLeft < 0){
         clearInterval(timerInterval);
         endQuiz();
       }
@@ -80,7 +88,7 @@ var secondsLeft = 10;
     }, 1000);
 
     //call questions 
-   // startQuiz();
+   startQuiz();
    }
 
   
@@ -94,7 +102,16 @@ function startQuiz(questions){
   var output = [];
   var answers;
 
-
+  qContainer = questions[currentQuestion].title;
+  questionEl.textContent = qContainer;
+  //display questions and choices
+  selection = questions[currentQuestion].choices;
+  choiceAEl.text(selection[0]);
+  choiceBEl.text(selection[1]);
+  choiceCEl.text(selection[2]);
+  choiceDEl.text(selection[3]);
+  //correct answer
+  correct = questions[currentQuestion].answer;
   
 
  // const title = document.getElementById('#main')
@@ -115,43 +132,55 @@ function startQuiz(questions){
 
 
 //display end of quiz page
-var response = userScore.value;
-var savedResponse = $("#highscore");
-function endQuiz() {
- 
+var savedResponseEl = $("#highscore");
+var response = [];
+function endQuiz() { 
  //TODO: questionEl.hide();
  //endscreen Title Element
   endTitleEl.text ("The End!");
   endTitleEl.attr("class", "title").addClass("format");
   console.log(endTitleEl);
+
  //endscreen score element
   resultsBox.text ("Your score is: " + secondsLeft + "! Record your score and initials below.").addClass("format").addClass("paragraph");
-  //userscore
+  //Text box for users to add their score
   userScore.attr("placeholder", "your score").addClass("format").addClass("score-box").attr("id","score");
   submit.text("Submit").attr("class", "submit-button");
 
-//save response in local storage
+  if(submit==="click"){
+    displayResponse();
+   }
   
-  localStorage.setItem("response", JSON.stringify(response));
-
-  mainEl.append(userScore);
-  mainEl.append(submit);
-  savedResponse.append (response);
-  displayResponse();
+  //render leaderboard scores
+  
+//save response in local storage
+mainEl.append(userScore);
+mainEl.append(submit);
+  
 }
 
+
 function displayResponse() {
+  endTitleEl.hide();
+  resultsBox.hide();
+  submit.hide();
+
+  savedResponseEl.HTML = "";
+
+  for (var i = 0; i < response.length; i++){
+    var responses = response[i];
+    var li =$("<li>");
+    li.text(responses).attr("data-index", i);
+
+    console.log(li);
+    
+    savedResponseEl.append(li);
   
-  var lastScore = JSON.parse(localStorage.getItem("response"));
-  if (lastScore !== null) {
-    savedResponse = lastScore;
-  } else {
-    return;
   }
 }
 submit.on("click", displayResponse);
 
-startButton.on('click', setTime);
+startButton.on("click", setTime);
 
 //append page elements
 mainEl.append(titleEl);
