@@ -26,6 +26,7 @@ var choiceCEl = $("#choice-C");
 var choiceDEl = $("#choice-D");
 let currentQuestion = 0;
 
+
 //questions array
 var questions = [
   {
@@ -108,14 +109,11 @@ function startQuiz(){
   paragraphEl.hide();
   startButton.hide();
 
-  //Questions
+ 
+  //display Questions
   qContainer = questions[currentQuestion].title;
-  questionTitle.text(qContainer);
-
-  //questionTitle.text(qContainer).attr("class", "title").addClass("format");
-  
-
-  
+  choiceEl = questions[currentQuestion].choices;
+  questionTitle.text(qContainer).attr("class", "title").addClass("format");
   
   //display questions and choices
   selection = questions[currentQuestion].choices;
@@ -126,12 +124,11 @@ function startQuiz(){
   //correct answer
   correct = questions[currentQuestion].answer;
   
-
  // const title = document.getElementById('#quizEl')
   
     //create a for loop that cycles through questions array each time user selects an answer
     for (i=0 ; i<questions.length; i++){
-
+      choices
       //reset answer list
       answers = [];
 
@@ -148,7 +145,12 @@ function startQuiz(){
 var savedResponseEl = $("#highscore");
 var response = [];
 function endQuiz() { 
- //TODO: questionEl.hide();
+ 
+  questionTitle.hide();
+  choiceAEl.hide();
+  choiceBEl.hide();
+  choiceCEl.hide();
+  choiceDEl.hide();
 
  //endscreen Title Element
   endTitleEl.text ("The End!");
