@@ -8,33 +8,17 @@ repo link: https://github.com/sdoval27/java_script_quiz
 - This site is a timed JavaSript quiz.
 
 
-### Prompts:
-![Password Prompt](assets/images/password_prompt.png)
-
-- When the generate password button is selected, this begins a series of window prompt questions in which the user can select the password's length, and what character types they wish to include. 
-
-- If the user inputs a password length that is too short (less than 8 characters) or too long (over 128 characters) the password generator will prompt the user to try again. The same can be said in the instance where the user refuses to select a character type.
-
-![Error Message](assets/images/password_too_long.png)
-
-
-### Validation:
-- When the user inuts the desired criteria, the password generator will produce a password that includes the desired length and character types. This password is generated within the text box of the page.
-
-![Pass Products](assets/images/generated-pass.png)
+### Usage:
+- To start the quiz, press the start button. This will start the countdown timer and (if I'm able to finish in time) display the quiz questions.
+- If the timer runs out, the user will be directed to the results page where they can write their initials and score to be saved (in theory) to the leaderboard section of the quiz.
 
 ## Installation
 
 N/A
 
-## References
-
-https://dev.to/code_mystery/random-password-generator-using-javascript-6a
-https://youtu.be/duNmhKgtcsI
- 
 ## Usage
 When opening the page, the website should appear as so:
-
+![StartPage](./assets/images/JS-quiz-start-page.png)
  
 ## License
  

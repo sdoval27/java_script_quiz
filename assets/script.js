@@ -4,7 +4,8 @@ var startButton = $("<button>");
 var timerCountdown = $("<li>");
 
 var alertEl = $("<p>");
-var mainEl = $("#main");
+var startPageEl = $("#start-screen");
+var resultsPageEl= $("#end-screen");
 var timeEl = $("#timer");
 
 //Home Page
@@ -17,6 +18,7 @@ paragraphEl.text("Try to answer all the questions as quickly and accurately as p
 startButton.text("Start Quiz").attr("class", "start-button").addClass("format");
 
 //Questions Page
+var quizEl= $("#quiz");
 var qContainer = [];
 var choiceAEl = $("#choice-A");
 var choiceBEl = $("#choice-B");
@@ -114,7 +116,7 @@ function startQuiz(questions){
   correct = questions[currentQuestion].answer;
   
 
- // const title = document.getElementById('#main')
+ // const title = document.getElementById('#quizEl')
   
     //create a for loop that cycles through questions array each time user selects an answer
     for (i=0 ; i<questions.length; i++){
@@ -156,8 +158,8 @@ function endQuiz() {
   
   
 //save response in local storage
-mainEl.append(userScore);
-mainEl.append(submit);
+resultsPageEl.append(userScore);
+resultsPageEl.append(submit);
   
 }
 
@@ -184,8 +186,9 @@ submit.on("click", displayResponse);
 startButton.on("click", setTime);
 
 //append page elements
-mainEl.append(titleEl);
-mainEl.append(paragraphEl);
-mainEl.append(startButton);
-mainEl.append(endTitleEl);
-mainEl.append(resultsBox);
+startPageEl.append(titleEl);
+startPageEl.append(paragraphEl);
+startPageEl.append(startButton);
+//TODO: append quiz elements
+resultsPageEl.append(endTitleEl);
+resultsPageEl.append(resultsBox);
