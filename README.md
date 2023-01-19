@@ -1,6 +1,6 @@
 # java_script_quiz
 
-site link:
+site link: https://sdoval27.github.io/java_script_quiz/
 repo link: https://github.com/sdoval27/java_script_quiz
 
 ## Description
