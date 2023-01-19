@@ -94,24 +94,35 @@ var secondsLeft = 75;
    startQuiz();
    }
 
+var questionTitle = $("<h2>");
+var choiceAEl = $("<button>");
+var choiceBEl = $("<button>");
+var choiceCEl = $("<button>");
+var choiceDEl = $("<button>");
 var answers = questions[currentQuestion].answer;
+
 //todo: create a function that defines how the quiz works
-function startQuiz(questions){
+function startQuiz(){
   //hide Title, Paragraph El, start button
   titleEl.hide();
   paragraphEl.hide();
   startButton.hide();
-  
+
+  //Questions
+  qContainer = questions[currentQuestion].title;
+  questionTitle.text(qContainer);
+
+  //questionTitle.text(qContainer).attr("class", "title").addClass("format");
   
 
-  qContainer = questions[currentQuestion].title;
-  questionEl.textContent = qContainer;
+  
+  
   //display questions and choices
   selection = questions[currentQuestion].choices;
-  choiceAEl.text(selection[0]);
-  choiceBEl.text(selection[1]);
-  choiceCEl.text(selection[2]);
-  choiceDEl.text(selection[3]);
+  choiceAEl.text(selection[0]).text(currentQuestion.choices).attr("class", "start-button");
+  choiceBEl.text(selection[1]).text(currentQuestion.choices).attr("class", "start-button");
+  choiceCEl.text(selection[2]).text(currentQuestion.choices).attr("class", "start-button");
+  choiceDEl.text(selection[3]).text(currentQuestion.choices).attr("class", "start-button");
   //correct answer
   correct = questions[currentQuestion].answer;
   
@@ -189,6 +200,12 @@ startButton.on("click", setTime);
 startPageEl.append(titleEl);
 startPageEl.append(paragraphEl);
 startPageEl.append(startButton);
-//TODO: append quiz elements
+//append quiz elements
+quizEl.append(questionTitle);
+quizEl.append(choiceAEl);
+quizEl.append(choiceBEl);
+quizEl.append(choiceCEl);
+quizEl.append(choiceDEl);
+//append End Screen Elements
 resultsPageEl.append(endTitleEl);
 resultsPageEl.append(resultsBox);
