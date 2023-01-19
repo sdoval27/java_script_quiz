@@ -124,11 +124,17 @@ function startQuiz(){
   //correct answer
   correct = questions[currentQuestion].answer;
   
- // const title = document.getElementById('#quizEl')
   
     //create a for loop that cycles through questions array each time user selects an answer
-    for (i=0 ; i<questions.length; i++){
-      choices
+    for (i=0 ; i<choiceEl.length; i++){
+      choiceEl[i].on("click", function(event){ //issue here
+      event(preventDefault)
+
+        if (currentQuestion < 5 && 0 <= currentQuestion){
+        currentQuestion++;
+        }
+
+    })
       //reset answer list
       answers = [];
 
