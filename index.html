@@ -12,18 +12,37 @@
  <header> 
   <nav class="navbar">
     <ul>
-     <li id="leaderboard">view high score</li>
+     <li><a href="#highscore">view high score</a></li>
      <!--add timer-->
-     <li id="timer"> timer</li>
+     <li id="timer"></li>
     </ul>
   </nav>
  </header>
+<!--append content to main below-->
+ <main id="main">
+  <div id="start-screen">
 
-  <main>
-  <h2 class="title"></h2>
-  <p class="paragraph-element"></p>
-  <button>Start Quiz</button>
-</main>
-  <script src= "script.js"></script>
+  </div>
+
+  <!--quiz section-->
+  <div id="title">  </div>
+
+  <div id="quiz"> 
+    <h2 id="question-title" class="title"></h2>
+    <div id="choice-A"></div>
+    <div id="choice-B"></div>
+    <div id="choice-C"></div>
+    <div id="choice-D"></div>
+  </div> 
+<!--End Screen Section-->
+<div id="end-screen"> 
+  <ul id="highscore"></ul>
+</div> 
+ </main>
+
+
+
+  <script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
+  <script src= "./assets/script.js"></script>
 </body>
 </html>
