@@ -124,18 +124,35 @@ function startQuiz(){
   //correct answer
   correct = questions[currentQuestion].answer;
   
- // const title = document.getElementById('#quizEl')
   
     //create a for loop that cycles through questions array each time user selects an answer
-    for (i=0 ; i<questions.length; i++){
-      choices
+    for (i=0 ; i<choiceEl.length; i++){
+      choiceEl[i].on("click", function(event){ //issue here
+      event(preventDefault)
+      })
+
+      for (x = 0; x < questions.title.length; x++) {
+        if (questionTitle == questions[x].title) {
+            // Determine whether or not the answer is correct.
+         } 
+        if (currentAnswer == questions[x].answer) {
+
+        }
+        if (currentQuestion < 5 && 0 <= currentQuestion){
+        currentQuestion++;
+        }
+      
+    }
+  
+
+    }
       //reset answer list
       answers = [];
 
       for(letter in questions[i].choices){
         console.log(questions[i].choices);
     }
-  }
+  
     
 };
 
@@ -191,7 +208,7 @@ function displayResponse() {
     console.log(li);
     
     savedResponseEl.append(li);
-  
+    localStorage.setItem(savedResponseEl, JSON.stringify(savedResponseEl));
   }
 }
 submit.on("click", displayResponse);
